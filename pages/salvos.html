@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cursos Salvos - Fluux</title>
+    <link rel="stylesheet" href="../css/global.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Sora:wght@600;700;800&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <div class="navbar">
+        <div class="topbar">
+
+            <a class="logo" href="../index.html">
+                <img src="../assets/images/logos/logo fluux BRANCA.png" alt="Fluux" class="logo-img">
+            </a>
+
+            <nav class="nav-links">
+                <a href="../index.html">Cursos</a>
+                <a class="ativo" href="salvos.html">Salvos</a>
+                <a href="sobre.html">Sobre</a>
+                <a href="contato.html">Contato</a>
+            </nav>
+
+            <nav class="topbar-actions">
+                <a class="link-entrar" href="login.html">Entrar</a>
+                <a class="btn-cadastrar" href="cadastro.html">Cadastrar</a>
+            </nav>
+
+        </div>
+    </div>
+
+    <header class="salvos-hero">
+        <div class="hero-content">
+            <a class="voltar-cursos" href="../index.html">← Voltar para todos os cursos</a>
+            <span class="hero-eyebrow">Sua coleção de aprendizado</span>
+            <h1>Seus Cursos <span class="destaque">Salvos</span></h1>
+            <p>Acesse rapidamente os conteúdos que você guardou para assistir mais tarde.</p>
+        </div>
+    </header>
+
+    <main class="container">
+
+        <div class="salvos-wrapper">
+
+            <section class="cursos-grid" id="grid-salvos">
+                <!-- Cursos salvos serão renderizados dinamicamente via JS/PHP -->
+            </section>
+
+            <div class="empty-salvos" id="empty-salvos" style="display: none;">
+                <div class="empty-icone">🔖</div>
+                <h2>Você não tem cursos salvos no momento</h2>
+                <p>Navegue pela nossa plataforma e salve os cursos que mais chamarem sua atenção para assistir quando quiser.</p>
+                <a class="btn-primario" href="../index.html">Explorar cursos</a>
+            </div>
+
+        </div>
+
+    </main>
+
+    <footer class="site-footer">
+        &copy; 2026 Fluux. Todos os direitos reservados.
+    </footer>
+
+    <script src="../js/favoritos.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de Aluno - Fluux</title>
+    <link rel="stylesheet" href="../css/cadastro.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Sora:wght@600;700;800&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <div class="auth-topo">
+        <a class="logo" href="../index.html">
+            <img src="../assets/images/logos/logo fluux BRANCA.png" alt="Fluux" class="logo-img">
+        </a>
+    </div>
+
+    <div class="auth-wrapper">
+        <div class="auth-card auth-card-larga">
+
+            <span class="auth-eyebrow">Comece agora</span>
+            <h1>Cadastro de aluno</h1>
+            <span class="subtitulo">Vamos começar sua jornada com a gente!</span>
+
+            <form action="../php/processar-cadastro.php" method="post">
+
+                <label for="nome">Nome do aluno</label>
+                <input type="text" id="nome" name="nome" placeholder="Digite seu nome" required>
+
+                <div class="linha-dupla">
+                    <div>
+                        <label for="cpf">CPF</label>
+                        <input type="text" id="cpf" name="cpf" placeholder="000.000.000-00" inputmode="numeric" required>
+                    </div>
+                    <div>
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" placeholder="seuemail@exemplo.com" required>
+                    </div>
+                </div>
+
+                <div class="linha-dupla">
+                    <div>
+                        <label for="senha">Senha</label>
+                        <input type="password" id="senha" name="senha" placeholder="Mínimo 6 caracteres" minlength="6" required>
+                    </div>
+                    <div>
+                        <label for="confirmar_senha">Confirmar senha</label>
+                        <input type="password" id="confirmar_senha" name="confirmar_senha" placeholder="Repita a senha" minlength="6" required>
+                    </div>
+                </div>
+
+                <div class="linha-dupla">
+                    <div>
+                        <label for="nivel">Nível</label>
+                        <select id="nivel" name="nivel">
+                            <option>Iniciante</option>
+                            <option>Intermediário</option>
+                            <option>Avançado</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="curso">Curso</label>
+                        <select id="curso" name="curso">
+                            <option>Desenvolvimento Web</option>
+                            <option>Desenvolvimento Backend</option>
+                            <option>Desenvolvimento Mobile</option>
+                            <option>Estrutura de Dados e Algoritmos</option>
+                            <option>Cibersegurança</option>
+                        </select>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn-entrar">Matricular</button>
+
+            </form>
+
+            <p class="auth-rodape">
+                Já tem uma conta?
+                <a href="login.html">Entrar</a>
+            </p>
+
+            <p class="auth-voltar">
+                <a href="../index.html">&larr; Voltar para os cursos</a>
+            </p>
+
+        </div>
+    </div>
+
+</body>
+</html>
