@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro realizado - Fluux</title>
+    <link rel="stylesheet" href="../css/sucesso.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Sora:wght@600;700;800&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <div class="auth-topo">
+        <a class="logo" href="../index.html">
+            <img src="../assets/images/logos/logo fluux BRANCA.png" alt="Fluux" class="logo-img">
+        </a>
+    </div>
+
+    <div class="auth-wrapper">
+        <div class="sucesso-card">
+
+            <div class="sucesso-icone-wrap">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M4 12.5l5 5 11-11"></path>
+                </svg>
+            </div>
+
+            <span class="sucesso-eyebrow">Matrícula confirmada</span>
+
+            <h1>Cadastro realizado com sucesso!</h1>
+            <span class="subtitulo">Sua conta foi criada e sua matrícula já está garantida. Prepare-se pra começar a aprender!</span>
+
+            <div class="sucesso-dados vazio" id="bloco-dados">
+                <div class="sucesso-dados-titulo">Resumo do cadastro</div>
+                <dl id="lista-dados"></dl>
+            </div>
+
+            <div class="sucesso-acoes">
+                <a class="btn-entrar" href="../index.html">Ir para a página inicial</a>
+                <a class="btn-secundario" href="login.html">Fazer login agora</a>
+            </div>
+
+        </div>
+    </div>
+
+    <p class="site-footer">&copy; 2026 Fluux. Todos os direitos reservados.</p>
+
+    <script>
+        /*
+            Esta página lê os dados do aluno pela query string da URL,
+            por exemplo:
+            sucesso-cadastro.html?nome=Maria&email=maria@exemplo.com&curso=Desenvolvimento+Web&nivel=Iniciante
+
+            No back-end (processar-cadastro.php), depois de salvar o aluno
+            com sucesso, basta redirecionar assim:
+
+            header("Location: ../pages/sucesso-cadastro.html?" . http_build_query([
+                "nome"  => $nome,
+                "email" => $email,
+                "curso" => $curso,
+                "nivel" => $nivel
+            ]));
+            exit;
+
+            Se nenhum dado for enviado na URL, o bloco de resumo
+            simplesmente não é exibido.
+        */
+
+        const params = new URLSearchParams(window.location.search);
+
+        const campos = [
+            { chave: "nome", rotulo: "Nome" },
+            { chave: "email", rotulo: "Email" },
+            { chave: "curso", rotulo: "Curso" },
+            { chave: "nivel", rotulo: "Nível" }
+        ];
+
+        const lista = document.getElementById("lista-dados");
+        const bloco = document.getElementById("bloco-dados");
+        let temDados = false;
+
+        campos.forEach(campo => {
+            const valor = params.get(campo.chave);
+            if (valor) {
+                temDados = true;
+                const dt = document.createElement("dt");
+                dt.textContent = campo.rotulo;
+                const dd = document.createElement("dd");
+                dd.textContent = valor;
+                lista.appendChild(dt);
+                lista.appendChild(dd);
+            }
+        });
+
+        if (temDados) {
+            bloco.classList.remove("vazio");
+        }
+    </script>
+
+</body>
+</html>
