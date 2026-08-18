@@ -83,7 +83,8 @@
 
         <section class="secao">
             <h2>Envie sua mensagem</h2>
-            <form class="form-contato" action="#" method="post">
+
+            <form class="form-contato" id="form-contato">
 
                 <label for="nome">Nome</label>
                 <input type="text" id="nome" name="nome" placeholder="Digite seu nome" required>
@@ -104,9 +105,16 @@
                 <label for="mensagem">Mensagem</label>
                 <textarea id="mensagem" name="mensagem" placeholder="Escreva aqui sua mensagem..." required></textarea>
 
-                <button type="submit" class="btn-primario-form">Enviar mensagem</button>
+                <button type="submit" class="btn-primario-form" id="btn-enviar-contato">Enviar mensagem</button>
 
             </form>
+
+            <div class="form-ok" id="form-ok" style="display:none" role="alert">
+                <div class="form-ok__icone">✅</div>
+                <h3>Mensagem enviada com sucesso!</h3>
+                <p>Obrigado pelo contato. Vamos responder assim que possível.</p>
+                <button class="btn-outline-form" id="btn-nova-msg">Enviar outra mensagem</button>
+            </div>
         </section>
 
         <section class="secao">
@@ -137,6 +145,8 @@
     <footer class="site-footer">
         &copy; 2026 Fluux. Todos os direitos reservados.
     </footer>
+
+    <script src="../js/contato.js"></script>
 
 </body>
 </html>
