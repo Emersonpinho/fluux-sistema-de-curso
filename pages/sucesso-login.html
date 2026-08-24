@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login realizado - Fluux</title>
+    <link rel="stylesheet" href="../css/sucesso.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Sora:wght@600;700;800&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <div class="auth-topo">
+        <a class="logo" href="../index.html">
+            <img src="../assets/images/logos/logo fluux BRANCA.png" alt="Fluux" class="logo-img">
+        </a>
+    </div>
+
+    <div class="auth-wrapper">
+        <div class="sucesso-card">
+
+            <div class="sucesso-icone-wrap">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M4 12.5l5 5 11-11"></path>
+                </svg>
+            </div>
+
+            <span class="sucesso-eyebrow">Login confirmado</span>
+
+            <h1 id="titulo-boas-vindas">Login realizado com sucesso!</h1>
+            <span class="subtitulo">É bom ter você de volta. Bons estudos e ótimos cursos te esperam.</span>
+
+            <div class="sucesso-dados vazio" id="bloco-dados">
+                <div class="sucesso-dados-titulo">Sessão iniciada como</div>
+                <dl id="lista-dados"></dl>
+            </div>
+
+            <div class="sucesso-acoes">
+                <a class="btn-entrar" href="../index.html">Ir para a página inicial</a>
+                <a class="btn-secundario" href="../index.html#cursos">Ver meus cursos</a>
+            </div>
+
+        </div>
+    </div>
+
+    <p class="site-footer">&copy; 2026 Fluux. Todos os direitos reservados.</p>
+
+    <script>
+        /*
+            Assim como na página de cadastro, os dados do aluno vêm
+            pela query string da URL, por exemplo:
+            sucesso-login.html?nome=Maria&email=maria@exemplo.com
+
+            No back-end, após validar o login com sucesso, redirecione assim:
+
+            header("Location: ../pages/sucesso-login.html?" . http_build_query([
+                "nome"  => $nome,
+                "email" => $email
+            ]));
+            exit;
+        */
+
+        const params = new URLSearchParams(window.location.search);
+
+        const campos = [
+            { chave: "nome", rotulo: "Nome" },
+            { chave: "email", rotulo: "Email" }
+        ];
+
+        const lista = document.getElementById("lista-dados");
+        const bloco = document.getElementById("bloco-dados");
+        let temDados = false;
+
+        campos.forEach(campo => {
+            const valor = params.get(campo.chave);
+            if (valor) {
+                temDados = true;
+                const dt = document.createElement("dt");
+                dt.textContent = campo.rotulo;
+                const dd = document.createElement("dd");
+                dd.textContent = valor;
+                lista.appendChild(dt);
+                lista.appendChild(dd);
+            }
+        });
+
+        if (temDados) {
+            bloco.classList.remove("vazio");
+        }
+
+        const nome = params.get("nome");
+        if (nome) {
+            document.getElementById("titulo-boas-vindas").textContent = `Bem-vindo(a) de volta, ${nome}!`;
+        }
+    </script>
+
+</body>
+</html>
