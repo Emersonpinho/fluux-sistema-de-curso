@@ -1,0 +1,489 @@
+/* =====================================================
+   RESET
+===================================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+body {
+    min-height: 100vh;
+
+    font-family: "Poppins", sans-serif;
+
+    background: #f4f7fc;
+
+    color: #101c3d;
+}
+
+
+/* =====================================================
+   NAVBAR
+===================================================== */
+
+.navbar {
+    width: 100%;
+
+    background: #101c3d;
+
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+}
+
+
+.topbar {
+    width: min(1200px, 92%);
+
+    min-height: 76px;
+
+    margin: 0 auto;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 35px;
+}
+
+
+/* LOGO */
+
+.logo {
+    display: flex;
+
+    align-items: center;
+
+    text-decoration: none;
+}
+
+
+.logo-img {
+    width: 125px;
+
+    height: auto;
+
+    display: block;
+}
+
+
+/* LINKS */
+
+.nav-links {
+    display: flex;
+
+    align-items: center;
+
+    gap: 25px;
+
+    margin-right: auto;
+}
+
+
+.nav-links a {
+    color: white;
+
+    text-decoration: none;
+
+    font-size: 14px;
+
+    font-weight: 500;
+
+    transition: 0.2s ease;
+}
+
+
+.nav-links a:hover {
+    color: #c6ff5c;
+}
+
+
+/* =====================================================
+   USUÁRIO NA NAVBAR
+===================================================== */
+
+.perfil-nav {
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    color: white;
+
+    font-size: 14px;
+
+    font-weight: 600;
+}
+
+
+.perfil-avatar {
+    border-radius: 50%;
+
+    background: #c6ff5c;
+
+    color: #101c3d;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    font-weight: 800;
+}
+
+
+.perfil-avatar.pequeno {
+    width: 38px;
+
+    height: 38px;
+
+    font-size: 15px;
+}
+
+
+.btn-sair {
+    margin-left: 12px;
+
+    padding: 8px 15px;
+
+    border: 1px solid rgba(255, 255, 255, 0.3);
+
+    border-radius: 8px;
+
+    color: white;
+
+    text-decoration: none;
+
+    font-size: 13px;
+
+    transition: 0.2s ease;
+}
+
+
+.btn-sair:hover {
+    background: #c6ff5c;
+
+    border-color: #c6ff5c;
+
+    color: #101c3d;
+}
+
+
+/* =====================================================
+   CONTAINER
+===================================================== */
+
+.perfil-container {
+    width: min(900px, 92%);
+
+    margin: 55px auto;
+}
+
+
+/* =====================================================
+   CARD
+===================================================== */
+
+.perfil-card {
+    background: white;
+
+    border-radius: 20px;
+
+    padding: 40px;
+
+    box-shadow: 0 10px 40px rgba(16, 28, 61, 0.08);
+}
+
+
+/* =====================================================
+   HEADER DO PERFIL
+===================================================== */
+
+.perfil-header {
+    display: flex;
+
+    align-items: center;
+
+    gap: 25px;
+
+    padding-bottom: 35px;
+
+    border-bottom: 1px solid #e8ecf4;
+}
+
+
+.perfil-avatar.grande {
+    width: 95px;
+
+    height: 95px;
+
+    flex-shrink: 0;
+
+    font-size: 38px;
+}
+
+
+.perfil-label {
+    display: block;
+
+    margin-bottom: 5px;
+
+    color: #6d7890;
+
+    font-size: 13px;
+
+    font-weight: 600;
+
+    text-transform: uppercase;
+
+    letter-spacing: 1px;
+}
+
+
+.perfil-header h1 {
+    margin-bottom: 4px;
+
+    font-family: "Sora", sans-serif;
+
+    font-size: 30px;
+
+    color: #101c3d;
+}
+
+
+.perfil-header p {
+    color: #6d7890;
+
+    font-size: 15px;
+}
+
+
+/* =====================================================
+   INFORMAÇÕES
+===================================================== */
+
+.perfil-info {
+    padding: 35px 0;
+}
+
+
+.perfil-info h2 {
+    margin-bottom: 25px;
+
+    font-family: "Sora", sans-serif;
+
+    font-size: 20px;
+
+    color: #101c3d;
+}
+
+
+.info-grid {
+    display: grid;
+
+    grid-template-columns: repeat(2, 1fr);
+
+    gap: 18px;
+}
+
+
+.info-item {
+    padding: 20px;
+
+    background: #f6f8fc;
+
+    border: 1px solid #e7ebf3;
+
+    border-radius: 12px;
+}
+
+
+.info-item span {
+    display: block;
+
+    margin-bottom: 6px;
+
+    color: #7b8497;
+
+    font-size: 12px;
+
+    font-weight: 600;
+
+    text-transform: uppercase;
+
+    letter-spacing: 0.5px;
+}
+
+
+.info-item strong {
+    display: block;
+
+    color: #101c3d;
+
+    font-size: 15px;
+
+    word-break: break-word;
+}
+
+
+/* =====================================================
+   BOTÕES
+===================================================== */
+
+.perfil-acoes {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 15px;
+
+    padding-top: 25px;
+
+    border-top: 1px solid #e8ecf4;
+}
+
+
+.btn-voltar,
+.btn-sair-perfil {
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 12px 20px;
+
+    border-radius: 10px;
+
+    text-decoration: none;
+
+    font-size: 14px;
+
+    font-weight: 600;
+
+    transition: 0.2s ease;
+}
+
+
+.btn-voltar {
+    background: #2857c6;
+
+    color: white;
+}
+
+
+.btn-voltar:hover {
+    background: #1f48aa;
+}
+
+
+.btn-sair-perfil {
+    background: #fff1f1;
+
+    color: #d64545;
+
+    border: 1px solid #ffd8d8;
+}
+
+
+.btn-sair-perfil:hover {
+    background: #d64545;
+
+    color: white;
+}
+
+
+/* =====================================================
+   FOOTER
+===================================================== */
+
+.site-footer {
+    width: min(1200px, 92%);
+
+    margin: 0 auto;
+
+    padding: 20px 0 35px;
+
+    text-align: center;
+
+    color: #8992a5;
+
+    font-size: 13px;
+}
+
+
+/* =====================================================
+   RESPONSIVO
+===================================================== */
+
+@media (max-width: 800px) {
+
+    .topbar {
+        gap: 20px;
+    }
+
+
+    .nav-links {
+        display: none;
+    }
+
+
+    .perfil-nav {
+        margin-left: auto;
+    }
+
+}
+
+
+@media (max-width: 600px) {
+
+    .perfil-container {
+        margin: 30px auto;
+    }
+
+
+    .perfil-card {
+        padding: 25px 20px;
+    }
+
+
+    .perfil-header {
+        align-items: flex-start;
+
+        flex-direction: column;
+
+        gap: 15px;
+    }
+
+
+    .perfil-header h1 {
+        font-size: 25px;
+    }
+
+
+    .info-grid {
+        grid-template-columns: 1fr;
+    }
+
+
+    .perfil-acoes {
+        flex-direction: column;
+    }
+
+
+    .btn-voltar,
+    .btn-sair-perfil {
+        width: 100%;
+    }
+
+
+    .perfil-nav span {
+        display: none;
+    }
+
+}

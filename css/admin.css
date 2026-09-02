@@ -1,0 +1,713 @@
+@charset "UTF-8";
+
+/* ==========================================================
+   CSS — PAINEL DO ADMINISTRADOR (FLUUX)
+   Paleta: Navy (#101c3d), Azul Escuro (#2857c6), Lima (#c6ff5c)
+========================================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+:root {
+    --navy: #101c3d;
+    --navy-2: #0a1128;
+    --azul-escuro: #2857c6;
+    --azul-medio: #2f89e8;
+    --azul-claro: #4aa9ef;
+    --lima: #c6ff5c;
+    --lima-hover: #b5f543;
+    --branco: #ffffff;
+    --cinza-fundo: #f4f7fc;
+    --cinza-card: #ffffff;
+    --cinza-texto: #5a667d;
+    --cinza-titulo: #101c3d;
+    --borda: #e4eaf3;
+    --borda-foco: #2f89e8;
+    
+    --sombra-suave: 0 4px 20px rgba(16, 28, 61, 0.05);
+    --sombra-card: 0 10px 30px rgba(16, 28, 61, 0.08);
+    --sombra-destaque: 0 14px 35px rgba(40, 87, 198, 0.15);
+    
+    --font-display: 'Sora', 'Poppins', sans-serif;
+    --radius-sm: 8px;
+    --radius-md: 14px;
+    --radius-lg: 20px;
+    --radius-full: 999px;
+    --ease: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+body {
+    min-height: 100vh;
+    background-color: var(--cinza-fundo);
+    color: var(--cinza-texto);
+    display: flex;
+    flex-direction: column;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* ==========================================================
+   NAVBAR DO ADMIN
+========================================================== */
+
+.admin-navbar {
+    background-color: var(--navy);
+    box-shadow: 0 4px 25px rgba(0, 0, 0, 0.15);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.admin-nav-container {
+    width: min(1280px, 94%);
+    min-height: 74px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.admin-brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.admin-brand img {
+    height: 30px;
+    width: auto;
+    display: block;
+}
+
+.admin-tag {
+    background: rgba(198, 255, 92, 0.15);
+    color: var(--lima);
+    border: 1px solid rgba(198, 255, 92, 0.4);
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border-radius: var(--radius-full);
+}
+
+.admin-nav-links {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+}
+
+.admin-nav-links a {
+    color: rgba(255, 255, 255, 0.82);
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: color 0.2s var(--ease);
+}
+
+.admin-nav-links a:hover,
+.admin-nav-links a.active {
+    color: var(--lima);
+}
+
+.admin-nav-user {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.admin-avatar {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background: var(--lima);
+    color: var(--navy);
+    font-weight: 800;
+    font-size: 0.95rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 10px rgba(198, 255, 92, 0.3);
+}
+
+.admin-user-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.admin-user-name {
+    color: var(--branco);
+    font-size: 0.88rem;
+    font-weight: 600;
+    line-height: 1.2;
+}
+
+.admin-user-role {
+    color: rgba(255, 255, 255, 0.55);
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.btn-nav-sair {
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--branco);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 7px 14px;
+    border-radius: var(--radius-sm);
+    font-size: 0.82rem;
+    font-weight: 600;
+    transition: all 0.2s var(--ease);
+}
+
+.btn-nav-sair:hover {
+    background: #e74c3c;
+    border-color: #e74c3c;
+    color: var(--branco);
+}
+
+/* ==========================================================
+   CONTEÚDO PRINCIPAL (DASHBOARD)
+========================================================== */
+
+.admin-main {
+    flex: 1;
+    width: min(1280px, 94%);
+    margin: 35px auto 60px;
+}
+
+/* Header do Dashboard */
+.dashboard-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.dashboard-header h1 {
+    font-family: var(--font-display);
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--cinza-titulo);
+}
+
+.dashboard-header p {
+    color: var(--cinza-texto);
+    font-size: 0.95rem;
+    margin-top: 4px;
+}
+
+.dashboard-actions {
+    display: flex;
+    gap: 12px;
+}
+
+/* Botões */
+.btn-admin-primary {
+    background: var(--azul-escuro);
+    color: var(--branco);
+    padding: 11px 20px;
+    border-radius: var(--radius-md);
+    font-size: 0.9rem;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.2s var(--ease);
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 4px 14px rgba(40, 87, 198, 0.25);
+}
+
+.btn-admin-primary:hover {
+    background: #1f48aa;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(40, 87, 198, 0.35);
+}
+
+.btn-admin-secondary {
+    background: var(--branco);
+    color: var(--cinza-titulo);
+    border: 1px solid var(--borda);
+    padding: 11px 18px;
+    border-radius: var(--radius-md);
+    font-size: 0.9rem;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.2s var(--ease);
+}
+
+.btn-admin-secondary:hover {
+    background: #f8fafc;
+    border-color: #cbd5e1;
+    transform: translateY(-2px);
+}
+
+/* ==========================================================
+   CARDS DE ESTATÍSTICAS (KPIs)
+========================================================== */
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 20px;
+    margin-bottom: 35px;
+}
+
+.stat-card {
+    background: var(--branco);
+    border-radius: var(--radius-lg);
+    padding: 24px;
+    box-shadow: var(--sombra-card);
+    border: 1px solid var(--borda);
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    transition: transform 0.2s var(--ease), box-shadow 0.2s var(--ease);
+}
+
+.stat-card:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--sombra-destaque);
+}
+
+.stat-icon-box {
+    width: 54px;
+    height: 54px;
+    border-radius: var(--radius-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.stat-icon-alunos {
+    background: rgba(40, 87, 198, 0.12);
+    color: var(--azul-escuro);
+}
+
+.stat-icon-cursos {
+    background: rgba(198, 255, 92, 0.25);
+    color: #558b00;
+}
+
+.stat-icon-aulas {
+    background: rgba(47, 137, 232, 0.12);
+    color: var(--azul-medio);
+}
+
+.stat-icon-matriculas {
+    background: rgba(16, 28, 61, 0.08);
+    color: var(--navy);
+}
+
+.stat-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.stat-label {
+    font-size: 0.82rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: #7b8497;
+}
+
+.stat-number {
+    font-family: var(--font-display);
+    font-size: 1.85rem;
+    font-weight: 800;
+    color: var(--cinza-titulo);
+    margin-top: 2px;
+    line-height: 1.1;
+}
+
+/* ==========================================================
+   SEÇÕES EM GRID DO PAINEL
+========================================================== */
+
+.dashboard-content-grid {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    gap: 25px;
+}
+
+.panel-card {
+    background: var(--branco);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--sombra-card);
+    border: 1px solid var(--borda);
+    overflow: hidden;
+}
+
+.panel-card-header {
+    padding: 20px 24px;
+    border-bottom: 1px solid var(--borda);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.panel-card-title {
+    font-family: var(--font-display);
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--cinza-titulo);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.panel-card-link {
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--azul-escuro);
+    transition: color 0.2s;
+}
+
+.panel-card-link:hover {
+    color: #1f48aa;
+    text-decoration: underline;
+}
+
+.panel-card-body {
+    padding: 20px 24px;
+}
+
+/* ==========================================================
+   TABELAS MODERNAS
+========================================================== */
+
+.table-responsive {
+    width: 100%;
+    overflow-x: auto;
+}
+
+.admin-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+    font-size: 0.88rem;
+}
+
+.admin-table th {
+    background: #f8fafc;
+    color: #64748b;
+    font-weight: 600;
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 12px 16px;
+    border-bottom: 1px solid var(--borda);
+}
+
+.admin-table td {
+    padding: 14px 16px;
+    border-bottom: 1px solid #f1f5f9;
+    color: #334155;
+    vertical-align: middle;
+}
+
+.admin-table tbody tr:hover {
+    background-color: #f8fafc;
+}
+
+.admin-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.badge-status {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: var(--radius-full);
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: capitalize;
+}
+
+.badge-ativo {
+    background: #ecfdf5;
+    color: #059669;
+    border: 1px solid #a7f3d0;
+}
+
+.badge-inativo {
+    background: #fef2f2;
+    color: #dc2626;
+    border: 1px solid #fecaca;
+}
+
+.badge-nivel {
+    background: #eff6ff;
+    color: #2563eb;
+    padding: 3px 8px;
+    border-radius: var(--radius-sm);
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+/* ==========================================================
+   LISTA DE ALUNOS RECENTES
+========================================================== */
+
+.student-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.student-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 14px;
+    border-radius: var(--radius-md);
+    background: #f8fafc;
+    border: 1px solid #f1f5f9;
+    transition: background 0.2s;
+}
+
+.student-item:hover {
+    background: #edf2f9;
+}
+
+.student-left {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.student-avatar {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: var(--azul-escuro);
+    color: var(--branco);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 0.85rem;
+}
+
+.student-details {
+    display: flex;
+    flex-direction: column;
+}
+
+.student-name {
+    font-weight: 600;
+    font-size: 0.88rem;
+    color: var(--cinza-titulo);
+}
+
+.student-email {
+    font-size: 0.78rem;
+    color: #7b8497;
+}
+
+.student-matricula {
+    font-size: 0.78rem;
+    color: #64748b;
+    font-weight: 500;
+}
+
+/* ==========================================================
+   RODAPÉ
+========================================================== */
+
+.admin-footer {
+    text-align: center;
+    color: #8992a5;
+    font-size: 0.82rem;
+    padding: 20px 0 30px;
+    margin-top: auto;
+}
+
+/* ==========================================================
+   RESPONSIVO
+========================================================== */
+
+@media (max-width: 992px) {
+    .dashboard-content-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .admin-nav-links {
+        display: none;
+    }
+
+    .admin-user-info {
+        display: none;
+    }
+
+    .dashboard-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .dashboard-actions {
+        width: 100%;
+        flex-direction: column;
+    }
+
+    .btn-admin-primary,
+    .btn-admin-secondary {
+        justify-content: center;
+        width: 100%;
+    }
+}
+
+/* ==========================================================
+   MODAL DE CONFIRMAÇÃO ELEGANTE
+========================================================== */
+
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(16, 28, 61, 0.6);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 99999;
+    padding: 20px;
+    animation: fadeOverlay 0.25s var(--ease) forwards;
+}
+
+@keyframes fadeOverlay {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.modal-card {
+    background: #ffffff;
+    width: 100%;
+    max-width: 440px;
+    border-radius: var(--radius-lg);
+    padding: 34px 28px;
+    text-align: center;
+    box-shadow: 0 25px 60px rgba(16, 28, 61, 0.25);
+    border: 1px solid var(--borda);
+    animation: scaleModal 0.28s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+@keyframes scaleModal {
+    from { opacity: 0; transform: scale(0.92) translateY(12px); }
+    to { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+.modal-icon-wrap {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    margin: 0 auto 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-icon-perigo {
+    background: #fef2f2;
+    color: #dc2626;
+    border: 4px solid #fee2e2;
+}
+
+.modal-card h3 {
+    font-family: var(--font-display);
+    font-size: 1.35rem;
+    font-weight: 700;
+    color: var(--cinza-titulo);
+    margin-bottom: 8px;
+}
+
+.modal-card p {
+    color: var(--cinza-texto);
+    font-size: 0.94rem;
+    line-height: 1.5;
+    margin-bottom: 14px;
+}
+
+.modal-card p strong {
+    color: var(--cinza-titulo);
+}
+
+.modal-aviso {
+    display: block;
+    background: #fff7ed;
+    color: #c2410c;
+    border: 1px solid #ffedd5;
+    padding: 10px 14px;
+    border-radius: var(--radius-md);
+    font-size: 0.8rem;
+    line-height: 1.4;
+    margin-bottom: 24px;
+    text-align: left;
+}
+
+.modal-botoes {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+}
+
+.btn-modal-cancelar {
+    flex: 1;
+    padding: 12px 18px;
+    background: #ffffff;
+    color: #475569;
+    border: 1px solid var(--borda);
+    border-radius: var(--radius-md);
+    font-weight: 600;
+    font-size: 0.92rem;
+    cursor: pointer;
+    transition: all 0.2s var(--ease);
+}
+
+.btn-modal-cancelar:hover {
+    background: #f8fafc;
+    border-color: #cbd5e1;
+}
+
+.btn-modal-confirmar {
+    flex: 1;
+    padding: 12px 18px;
+    background: #dc2626;
+    color: #ffffff;
+    border: none;
+    border-radius: var(--radius-md);
+    font-weight: 600;
+    font-size: 0.92rem;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 14px rgba(220, 38, 38, 0.25);
+    transition: all 0.2s var(--ease);
+}
+
+.btn-modal-confirmar:hover {
+    background: #b91c1c;
+    box-shadow: 0 6px 20px rgba(220, 38, 38, 0.4);
+    transform: translateY(-2px);
+}

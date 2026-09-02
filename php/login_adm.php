@@ -14,16 +14,16 @@ $email = isset($_POST["email"]) ? trim($_POST["email"]) : "";
 $senha_digitada = isset($_POST["senha"]) ? $_POST["senha"] : "";
 
 if (empty($email) || empty($senha_digitada)) {
-    header("Location: ../pages/login.php?erro=1");
+    header("Location: ../admin/login.php?erro=campos_vazios");
     exit;
 }
 
 /* =====================================================
-   BUSCA O ALUNO NO BANCO (com escape de segurança)
+   BUSCA O ADMINISTRADOR (com escape contra SQL Injection)
 ===================================================== */
 
 $email_escapado = mysqli_real_escape_string($conexao, $email);
-$sql = "SELECT * FROM aluno WHERE email = '$email_escapado'";
+$sql = "SELECT * FROM adm WHERE email = '$email_escapado'";
 
 $resultado = mysqli_query($conexao, $sql);
 
@@ -31,51 +31,50 @@ if (!$resultado) {
     die("Erro na consulta: " . mysqli_error($conexao));
 }
 
-$aluno = mysqli_fetch_assoc($resultado);
+$adm = mysqli_fetch_assoc($resultado);
 
 /* =====================================================
-   VERIFICAÇÃO DE SENHA (Texto simples ou Hash)
+   VERIFICA LOGIN (Compatível com PHP 5.4+)
 ===================================================== */
 
-$senha_correta = false;
+$senha_valida = false;
 
-if ($aluno) {
-    if ($senha_digitada === $aluno["senha"]) {
-        $senha_correta = true;
-    } elseif (function_exists('password_verify') && password_verify($senha_digitada, $aluno["senha"])) {
-        $senha_correta = true;
+if ($adm) {
+    if ($senha_digitada === $adm["senha"]) {
+        $senha_valida = true;
+    } elseif (function_exists('password_verify') && password_verify($senha_digitada, $adm["senha"])) {
+        $senha_valida = true;
     }
 }
 
-if ($senha_correta) {
+if ($senha_valida) {
 
     /* =================================================
-       CRIA A SESSÃO DO ALUNO
+       CRIA A SESSÃO DO ADMINISTRADOR
     ================================================= */
 
     session_regenerate_id(true);
 
-    $_SESSION["usuario_id"]    = $aluno["matricula"];
-    $_SESSION["usuario_nome"]  = $aluno["nome"];
-    $_SESSION["usuario_email"] = $aluno["email"];
-    $_SESSION["tipo_usuario"]  = "aluno";
+    $_SESSION["usuario_id"]    = $adm["id"];
+    $_SESSION["usuario_nome"]  = $adm["nome"];
+    $_SESSION["usuario_email"] = $adm["email"];
+    $_SESSION["tipo_usuario"]  = "adm";
 
     mysqli_close($conexao);
 
     /* =================================================
-       REDIRECIONA PARA A PÁGINA DE SUCESSO
+       REDIRECIONA PARA O PAINEL ADMINISTRATIVO
     ================================================= */
-    $url_sucesso = "../pages/sucesso-login.html?nome=" . urlencode($aluno["nome"]) . "&email=" . urlencode($aluno["email"]);
-    header("Location: " . $url_sucesso);
+    header("Location: ../admin/index.php");
     exit;
 
 } else {
 
     /* =================================================
-       ERRO NO LOGIN: REDIRECIONA DE VOLTA PARA O LOGIN
+       ERRO NO LOGIN
     ================================================= */
     mysqli_close($conexao);
-    header("Location: ../pages/login.php?erro=1");
+    header("Location: ../admin/login.php?erro=invalido");
     exit;
 }
 ?>
