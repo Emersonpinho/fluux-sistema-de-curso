@@ -7,12 +7,20 @@ require_once "../php/seed_cursos.php";
 
 $sucesso = isset($_GET["sucesso"]) ? $_GET["sucesso"] : null;
 
+<<<<<<< HEAD
 // Busca todos os cursos com os dados de nível, administrador e total de alunos matriculados
 $query_cursos = "
     SELECT c.codigo, c.nome, c.status, c.duracao, c.ementa, c.adm_id,
            COALESCE(n.nome, 'Geral') AS nivel_nome,
            COALESCE(a.nome, 'Administrador') AS adm_nome,
            (SELECT COUNT(*) FROM matricula_curso mc WHERE mc.curso_codigo = c.codigo) AS total_matriculados
+=======
+// Busca todos os cursos com os dados de nível e administrador
+$query_cursos = "
+    SELECT c.codigo, c.nome, c.status, c.duracao, c.ementa, c.adm_id,
+           COALESCE(n.nome, 'Geral') AS nivel_nome,
+           COALESCE(a.nome, 'Administrador') AS adm_nome
+>>>>>>> 129a36a058cabdafb31182dd449e19871d6d6a35
     FROM curso c
     LEFT JOIN nivel n ON c.nivel_id = n.id
     LEFT JOIN adm a ON c.adm_id = a.id
@@ -142,10 +150,15 @@ $primeira_letra = !empty($nome_adm) ? strtoupper(substr($nome_adm, 0, 1)) : "A";
                                 <th>Nível</th>
                                 <th>Carga Horária</th>
                                 <th>Ementa / Conteúdo</th>
+<<<<<<< HEAD
                                 <th>Matrículas</th>
                                 <th>Cadastrado por</th>
                                 <th>Status</th>
                                 <th>Ações</th>
+=======
+                                <th>Cadastrado por</th>
+                                <th>Status</th>
+>>>>>>> 129a36a058cabdafb31182dd449e19871d6d6a35
                             </tr>
                         </thead>
                         <tbody>
@@ -166,11 +179,14 @@ $primeira_letra = !empty($nome_adm) ? strtoupper(substr($nome_adm, 0, 1)) : "A";
                                             </div>
                                         </td>
                                         <td>
+<<<<<<< HEAD
                                             <span class="badge-alunos" style="display: inline-flex; align-items: center; gap: 4px; font-weight: 600; color: #1e40af; background: #dbeafe; padding: 4px 10px; border-radius: 999px; font-size: 0.8rem;">
                                                 👥 <?= (int)$curso["total_matriculados"] ?> aluno(s)
                                             </span>
                                         </td>
                                         <td>
+=======
+>>>>>>> 129a36a058cabdafb31182dd449e19871d6d6a35
                                             <span style="font-size: 0.82rem; color: #475569;"><?= htmlspecialchars($curso["adm_nome"]) ?></span>
                                         </td>
                                         <td>
@@ -178,11 +194,14 @@ $primeira_letra = !empty($nome_adm) ? strtoupper(substr($nome_adm, 0, 1)) : "A";
                                                 <?= htmlspecialchars($curso["status"]) ?>
                                             </span>
                                         </td>
+<<<<<<< HEAD
                                         <td>
                                             <a href="gerenciar_aulas.php?curso_id=<?= $curso["codigo"] ?>" style="display: inline-flex; align-items: center; gap: 4px; padding: 5px 12px; background: #2857c6; color: #ffffff; border-radius: 6px; font-size: 0.78rem; font-weight: 600; text-decoration: none;">
                                                 🎬 Aulas
                                             </a>
                                         </td>
+=======
+>>>>>>> 129a36a058cabdafb31182dd449e19871d6d6a35
                                     </tr>
                                 <?php endwhile; ?>
                             <?php else: ?>
