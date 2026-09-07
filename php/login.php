@@ -63,10 +63,9 @@ if ($senha_correta) {
     mysqli_close($conexao);
 
     /* =================================================
-       REDIRECIONA PARA A PÁGINA DE SUCESSO
+       INICIA A SESSÃO E REDIRECIONA DIRETO PARA A HOME
     ================================================= */
-    $url_sucesso = "../pages/sucesso-login.html?nome=" . urlencode($aluno["nome"]) . "&email=" . urlencode($aluno["email"]);
-    header("Location: " . $url_sucesso);
+    header("Location: ../index.php");
     exit;
 
 } else {

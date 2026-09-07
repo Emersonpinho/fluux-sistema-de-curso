@@ -113,7 +113,7 @@ $erro = isset($_GET["erro"]) ? $_GET["erro"] : null;
 
             <p class="auth-rodape">
                 Não tem uma conta?
-                <a href="cadastro.html">Crie uma!</a>
+                <a href="cadastro.php">Crie uma!</a>
             </p>
 
             <p class="auth-voltar">

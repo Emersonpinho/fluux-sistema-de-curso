@@ -66,7 +66,6 @@ $nivel_id = $aluno["nivel_id"];
 $inicial = strtoupper(substr($nome, 0, 1));
 
 
-<<<<<<< HEAD
 /* =====================================================
    BUSCA AS MATRÍCULAS DO ALUNO (Tabela matricula_curso)
 ===================================================== */
@@ -121,8 +120,6 @@ $info_cursos = [
     5 => ["imagem" => "../assets/images/cursos/ciberseguranca.webp", "link" => "../pages/cursos/curso-ciberseguranca.html"],
 ];
 
-=======
->>>>>>> 129a36a058cabdafb31182dd449e19871d6d6a35
 mysqli_close($conexao);
 
 ?>
@@ -363,7 +360,6 @@ mysqli_close($conexao);
         </section>
 
 
-<<<<<<< HEAD
         <!-- =================================================
              MEUS CURSOS EM ANDAMENTO (Tabela matricula_curso)
         ================================================== -->
@@ -507,8 +503,6 @@ mysqli_close($conexao);
         </section>
 
 
-=======
->>>>>>> 129a36a058cabdafb31182dd449e19871d6d6a35
     </main>
 
 
@@ -520,12 +514,9 @@ mysqli_close($conexao);
     </footer>
 
 
-<<<<<<< HEAD
     <script src="../js/favoritos.js"></script>
     <script src="../js/matricula.js"></script>
 
-=======
->>>>>>> 129a36a058cabdafb31182dd449e19871d6d6a35
 </body>
 
 </html>
