@@ -14,17 +14,17 @@
 
     <div class="navbar">
         <div class="topbar">
-            <a class="logo" href="../../index.html">
+            <a class="logo" href="../../index.php">
                 <img src="../../assets/images/logos/logo fluux BRANCA.png" alt="Fluux" class="logo-img">
             </a>
             <nav class="nav-links">
-                <a href="../../index.html">Cursos</a>
+                <a href="../../index.php">Cursos</a>
                 <a href="../salvos.html">Salvos</a>
                 <a href="../sobre.html">Sobre</a>
                 <a href="../contato.html">Contato</a>
             </nav>
             <nav class="topbar-actions">
-                <a href="../login.html">Entrar</a>
+                <a href="../login.php">Entrar</a>
                 <a href="../cadastro.html">Cadastrar</a>
             </nav>
         </div>
@@ -34,7 +34,7 @@
 
         <div class="hero-content">
 
-            <a class="voltar-cursos" href="../../index.html">← Voltar para os cursos</a>
+            <a class="voltar-cursos" href="../../index.php">← Voltar para os cursos</a>
 
             <span class="curso-codigo-badge">Código 003</span>
 
@@ -58,7 +58,7 @@
             </div>
 
             <div class="hero-actions">
-                <a class="btn-primario" href="../cadastro.html">Matricular-se</a>
+                <button class="btn-primario btn-matricular" data-codigo="003">Matricular-se</button>
                 <button class="btn-favorito-hero btn-salvar btn-favorito" data-codigo="003" aria-label="Salvar curso">Salvar curso</button>
             </div>
 
@@ -104,7 +104,7 @@
         </section>
 
         <section class="cta-final">
-            <a class="btn-detalhes" href="../../aulas/mobile/aula1-mobile.html">Começar curso</a>
+            <a class="btn-detalhes" href="../../aulas/aula.php?curso_id=3">Começar curso</a>
         </section>
 
     </main>
@@ -114,5 +114,6 @@
     </footer>
 
     <script src="../../js/favoritos.js"></script>
+    <script src="../../js/matricula.js"></script>
 </body>
 </html>

@@ -1,100 +1,186 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login realizado - Fluux</title>
-    <link rel="stylesheet" href="../css/sucesso.css">
+
+    <title>Login Realizado - Fluux</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Sora:wght@600;700;800&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Sora:wght@600;700;800&display=swap"
+        rel="stylesheet"
+    >
+
+    <link rel="stylesheet" href="../css/sucesso.css">
+    <style>
+        .sucesso-detalhes {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 14px;
+            padding: 16px 20px;
+            margin-bottom: 25px;
+            text-align: left;
+            display: none;
+        }
+        .sucesso-detalhes.ativo {
+            display: block;
+        }
+        .detalhe-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 6px 0;
+            font-size: 0.88rem;
+        }
+        .detalhe-item:not(:last-child) {
+            border-bottom: 1px solid #edf2f7;
+        }
+        .detalhe-rotulo {
+            color: #64748b;
+            font-weight: 500;
+        }
+        .detalhe-valor {
+            color: #071a41;
+            font-weight: 600;
+        }
+        .contador-aviso {
+            font-size: 0.8rem;
+            color: #8994a5;
+            margin-top: 15px;
+        }
+    </style>
 </head>
 
 <body>
 
-    <div class="auth-topo">
-        <a class="logo" href="../index.html">
-            <img src="../assets/images/logos/logo fluux BRANCA.png" alt="Fluux" class="logo-img">
+    <!-- =====================================================
+         TOP BAR
+    ====================================================== -->
+    <header class="auth-topo">
+        <a href="../index.php" class="logo">
+            <img
+                src="../assets/images/logos/logo fluux BRANCA.png"
+                alt="Fluux"
+                class="logo-img"
+            >
         </a>
-    </div>
+    </header>
 
-    <div class="auth-wrapper">
-        <div class="sucesso-card">
+    <!-- =====================================================
+         CONTEÚDO
+    ====================================================== -->
+    <main class="sucesso-wrapper">
 
-            <div class="sucesso-icone-wrap">
-                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M4 12.5l5 5 11-11"></path>
-                </svg>
+        <section class="sucesso-card">
+
+            <!-- LOGO DENTRO DO CARD -->
+            <div class="sucesso-marca">
+                <img
+                    src="../assets/images/logos/logo fluux PRETA.png"
+                    alt="Fluux"
+                    style="height: 32px; width: auto;"
+                >
             </div>
 
-            <span class="sucesso-eyebrow">Login confirmado</span>
-
-            <h1 id="titulo-boas-vindas">Login realizado com sucesso!</h1>
-            <span class="subtitulo">É bom ter você de volta. Bons estudos e ótimos cursos te esperam.</span>
-
-            <div class="sucesso-dados vazio" id="bloco-dados">
-                <div class="sucesso-dados-titulo">Sessão iniciada como</div>
-                <dl id="lista-dados"></dl>
+            <!-- ÍCONE DE SUCESSO -->
+            <div class="sucesso-icone">
+                ✓
             </div>
 
-            <div class="sucesso-acoes">
-                <a class="btn-entrar" href="../index.html">Ir para a página inicial</a>
-                <a class="btn-secundario" href="../index.html#cursos">Ver meus cursos</a>
+            <!-- TÍTULO -->
+            <h1 id="titulo-boas-vindas">
+                Login realizado!
+            </h1>
+
+            <!-- MENSAGEM -->
+            <p class="mensagem" id="mensagem-subtitulo">
+                Bem-vindo(a) de volta ao <strong>Fluux</strong>!
+                <br>
+                Sua sessão foi iniciada com segurança.
+            </p>
+
+            <!-- DETALHES DO USUÁRIO -->
+            <div class="sucesso-detalhes" id="caixa-detalhes">
+                <div class="detalhe-item">
+                    <span class="detalhe-rotulo">Aluno:</span>
+                    <span class="detalhe-valor" id="dado-nome">-</span>
+                </div>
+                <div class="detalhe-item">
+                    <span class="detalhe-rotulo">E-mail:</span>
+                    <span class="detalhe-valor" id="dado-email">-</span>
+                </div>
+                <div class="detalhe-item">
+                    <span class="detalhe-rotulo">Status:</span>
+                    <span class="detalhe-valor" style="color: #10b981;">● Conectado</span>
+                </div>
             </div>
 
-        </div>
-    </div>
+            <!-- BOTÕES -->
+            <div class="sucesso-botoes">
+                <a
+                    href="../index.php"
+                    class="sucesso-btn sucesso-btn-login"
+                >
+                    Acessar Cursos
+                </a>
 
-    <p class="site-footer">&copy; 2026 Fluux. Todos os direitos reservados.</p>
+                <a
+                    href="../perfil/perfil.php"
+                    class="sucesso-btn sucesso-btn-home"
+                >
+                    Ver Meu Perfil
+                </a>
+            </div>
+
+            <p class="contador-aviso" id="aviso-redirecionamento">
+                Redirecionando para os cursos em <span id="segundos">4</span>s...
+            </p>
+
+            <!-- FOOTER -->
+            <p class="sucesso-footer">
+                &copy; <?= date('Y'); ?> Fluux. Todos os direitos reservados.
+            </p>
+
+        </section>
+
+    </main>
 
     <script>
-        /*
-            Assim como na página de cadastro, os dados do aluno vêm
-            pela query string da URL, por exemplo:
-            sucesso-login.html?nome=Maria&email=maria@exemplo.com
-
-            No back-end, após validar o login com sucesso, redirecione assim:
-
-            header("Location: ../pages/sucesso-login.html?" . http_build_query([
-                "nome"  => $nome,
-                "email" => $email
-            ]));
-            exit;
-        */
-
         const params = new URLSearchParams(window.location.search);
+        const nome = params.get('nome');
+        const email = params.get('email');
 
-        const campos = [
-            { chave: "nome", rotulo: "Nome" },
-            { chave: "email", rotulo: "Email" }
-        ];
+        if (nome || email) {
+            const caixa = document.getElementById('caixa-detalhes');
+            caixa.classList.add('ativo');
 
-        const lista = document.getElementById("lista-dados");
-        const bloco = document.getElementById("bloco-dados");
-        let temDados = false;
-
-        campos.forEach(campo => {
-            const valor = params.get(campo.chave);
-            if (valor) {
-                temDados = true;
-                const dt = document.createElement("dt");
-                dt.textContent = campo.rotulo;
-                const dd = document.createElement("dd");
-                dd.textContent = valor;
-                lista.appendChild(dt);
-                lista.appendChild(dd);
+            if (nome) {
+                document.getElementById('titulo-boas-vindas').textContent = `Bem-vindo(a), ${nome}!`;
+                document.getElementById('dado-nome').textContent = nome;
             }
-        });
 
-        if (temDados) {
-            bloco.classList.remove("vazio");
+            if (email) {
+                document.getElementById('dado-email').textContent = email;
+            }
         }
 
-        const nome = params.get("nome");
-        if (nome) {
-            document.getElementById("titulo-boas-vindas").textContent = `Bem-vindo(a) de volta, ${nome}!`;
-        }
+        // Contador para redirecionamento suave automático
+        let tempoRestante = 4;
+        const spanSegundos = document.getElementById('segundos');
+
+        const intervalo = setInterval(() => {
+            tempoRestante--;
+            if (spanSegundos) spanSegundos.textContent = tempoRestante;
+            if (tempoRestante <= 0) {
+                clearInterval(intervalo);
+                window.location.href = '../index.php';
+            }
+        }, 1000);
     </script>
 
 </body>
+
 </html>

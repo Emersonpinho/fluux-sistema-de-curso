@@ -41,7 +41,7 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     // Determina caminhos relativos de acordo com a pasta da página atual
-    const isInsidePages = window.location.pathname.includes('/pages/');
+    const isInsidePages = window.location.pathname.includes('/pages/') || window.location.pathname.includes('/perfil/');
     const isInsideCursosOuAulas = window.location.pathname.includes('/pages/cursos/') || window.location.pathname.includes('/aulas/');
 
     function getPhpEndpoint() {
@@ -126,7 +126,13 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function aplicarEstadoSalvoEmTodos(codigo, salvo) {
-        const btns = document.querySelectorAll(`.btn-favorito[data-codigo="${codigo}"], .btn-salvar[data-codigo="${codigo}"]`);
+        const codNorm = String(codigo).padStart(3, '0');
+        const codInt = String(parseInt(codigo, 10));
+        const btns = document.querySelectorAll(
+            `.btn-favorito[data-codigo="${codigo}"], .btn-salvar[data-codigo="${codigo}"], .btn-remover-salvo[data-codigo="${codigo}"], ` +
+            `.btn-favorito[data-codigo="${codNorm}"], .btn-salvar[data-codigo="${codNorm}"], .btn-remover-salvo[data-codigo="${codNorm}"], ` +
+            `.btn-favorito[data-codigo="${codInt}"], .btn-salvar[data-codigo="${codInt}"], .btn-remover-salvo[data-codigo="${codInt}"]`
+        );
         btns.forEach(btn => atualizarVisualBotao(btn, salvo));
     }
 
@@ -139,7 +145,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
         gridSalvos.innerHTML = '';
 
-        const salvosValidos = codigosSalvos.filter(codigo => BANCO_CURSOS[codigo]);
+        const salvosValidos = codigosSalvos
+            .map(c => String(c).padStart(3, '0'))
+            .filter((c, i, arr) => BANCO_CURSOS[c] && arr.indexOf(c) === i);
 
         if (salvosValidos.length === 0) {
             gridSalvos.style.display = 'none';
@@ -210,7 +218,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Evento de clique para salvar/desfavoritar
     document.addEventListener('click', (e) => {
-        const btn = e.target.closest('.btn-favorito, .btn-salvar');
+        const btn = e.target.closest('.btn-favorito, .btn-salvar, .btn-remover-salvo');
         if (!btn) return;
 
         e.preventDefault();
@@ -226,20 +234,35 @@ document.addEventListener('DOMContentLoaded', () => {
         toggleLocalSalvo(codigo);
         aplicarEstadoSalvoEmTodos(codigo, novoEstado);
 
-        // Se estivermos na página salvos.html e desfavoritou, anima e remove o card
+        // Se estivermos na página salvos.html ou perfil.php e desfavoritou, anima e remove o card
         const cardSalvamento = btn.closest('[data-card-codigo]');
-        if (cardSalvamento && !novoEstado && window.location.pathname.includes('salvos.html')) {
+        if (cardSalvamento && !novoEstado && (window.location.pathname.includes('salvos.html') || window.location.pathname.includes('perfil.php') || window.location.pathname.includes('/perfil/'))) {
             cardSalvamento.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
             cardSalvamento.style.opacity = '0';
             cardSalvamento.style.transform = 'scale(0.9)';
             setTimeout(() => {
                 cardSalvamento.remove();
-                const cardsRestantes = document.querySelectorAll('[data-card-codigo]');
-                if (cardsRestantes.length === 0) {
+
+                // Trata a página de salvos.html
+                const cardsSalvosRestantes = document.querySelectorAll('#grid-salvos [data-card-codigo]');
+                if (document.getElementById('grid-salvos') && cardsSalvosRestantes.length === 0) {
                     const emptyState = document.getElementById('empty-salvos');
                     const gridSalvos = document.getElementById('grid-salvos');
                     if (gridSalvos) gridSalvos.style.display = 'none';
                     if (emptyState) emptyState.style.display = 'block';
+                }
+
+                // Trata a página de perfil.php
+                const cardsPerfilRestantes = document.querySelectorAll('.salvos-grid-perfil [data-card-codigo]');
+                const badgeContagem = document.querySelector('.badge-contagem');
+                if (badgeContagem) {
+                    badgeContagem.textContent = `${cardsPerfilRestantes.length} salvo(s)`;
+                }
+                if (document.querySelector('.salvos-grid-perfil') && cardsPerfilRestantes.length === 0) {
+                    const gridPerfil = document.querySelector('.salvos-grid-perfil');
+                    const emptyPerfil = document.querySelector('.empty-salvos-perfil');
+                    if (gridPerfil) gridPerfil.style.display = 'none';
+                    if (emptyPerfil) emptyPerfil.style.display = 'block';
                 }
             }, 300);
         }

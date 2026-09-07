@@ -340,6 +340,21 @@ body{
     transform:translateY(-1px);
 }
 
+.btn-primario.matriculado{
+    background:#101c3d;
+    color:#c6ff5c;
+    border:1.5px solid #c6ff5c;
+    cursor:default;
+    box-shadow:0 4px 14px rgba(198,255,92,.2);
+}
+
+.btn-primario.matriculado:hover{
+    transform:none;
+    background:#101c3d;
+    color:#c6ff5c;
+    box-shadow:0 4px 14px rgba(198,255,92,.2);
+}
+
 /* ==========================================================
    CONTAINER PRINCIPAL
 ========================================================== */

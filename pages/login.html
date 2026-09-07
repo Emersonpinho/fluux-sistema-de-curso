@@ -2,62 +2,13 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Entrar - Fluux</title>
-    <link rel="stylesheet" href="../css/login.css">
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Sora:wght@600;700;800&display=swap" rel="stylesheet">
+    <meta http-equiv="refresh" content="0; url=login.php">
+    <title>Redirecionando...</title>
+    <script>
+        window.location.href = "login.php" + window.location.search;
+    </script>
 </head>
-
 <body>
-
-    <div class="auth-topo">
-        <a class="logo" href="../index.html">
-            <img src="../assets/images/logos/logo fluux BRANCA.png" alt="Fluux" class="logo-img">
-        </a>
-    </div>
-
-    <div class="auth-wrapper">
-        <div class="auth-card">
-
-            <span class="auth-eyebrow">Bem-vindo de volta</span>
-            <h1>Login do aluno</h1>
-            <span class="subtitulo">É bom ter você conosco novamente!</span>
-
-            <form action="../php/processar-login.php" method="post">
-
-                <label for="email">Email</label>
-                <input type="email" id="email" name="email" placeholder="seuemail@exemplo.com" required>
-
-                <label for="senha">Senha</label>
-                <div class="campo-senha">
-                    <input type="password" id="senha" name="senha" placeholder="Digite sua senha" required>
-                </div>
-
-                <div class="opcoes">
-                    <label>
-                        <input type="checkbox" name="lembrar">
-                        Lembrar de mim
-                    </label>
-                    <a class="link-secundario" href="#">Esqueceu a senha?</a>
-                </div>
-
-                <button type="submit" class="btn-entrar">Entrar</button>
-
-            </form>
-
-            <p class="auth-rodape">
-                Não tem uma conta?
-                <a href="cadastro.html">Crie uma!</a>
-            </p>
-
-            <p class="auth-voltar">
-                <a href="../index.html">&larr; Voltar para os cursos</a>
-            </p>
-
-        </div>
-    </div>
-
+    <p>Redirecionando para <a href="login.php">o login</a>...</p>
 </body>
 </html>
